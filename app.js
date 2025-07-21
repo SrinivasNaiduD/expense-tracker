@@ -1,4 +1,3 @@
-
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
@@ -33,7 +32,9 @@ mongoose
   .connect(process.env.MONGO_URI, { useUnifiedTopology: true })
   .then(() => {
     console.log("MongoDB connected");
-    app.listen(9000, () => console.log("Server running on port 9000"));
+
+    const PORT = process.env.PORT || 9000;
+    app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
   })
   .catch((err) => {
     console.error("MongoDB connection failed:", err);
