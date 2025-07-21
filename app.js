@@ -29,7 +29,11 @@ app.use(errorHandler);
 
 // MongoDB Connection and Server Start
 mongoose
-  .connect(process.env.MONGO_URI, { useUnifiedTopology: true })
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    dbName: "expense-tracker",
+  })
   .then(() => {
     console.log("MongoDB connected");
 
